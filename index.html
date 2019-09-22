@@ -12,9 +12,10 @@
 
 
 
-
-
         BURGER
+
+
+
       -->
     <div class="main">
       <div id="Burger">
@@ -26,10 +27,9 @@
 
 
 
-
-
-
         NAV
+
+
       -->
       <div class="nav">
         <div id="my-name" class="purple">
@@ -37,7 +37,7 @@
         </div>
         <nav>
           <div class="link">
-            <a href="/" data-section="home">Home</a>
+            <a href="/" class="active" data-section="home">Home</a>
           </div>
           <div class="link">
             <a href="/apropos" data-section="apropos">À Propos</a>
@@ -61,15 +61,15 @@
 
 
 
-
-
-
           HEADER
+
+
+
       -->
       <header>
         <div class="my-name purple">Zakaria OTHMANE</div>
         <h1>
-          DÉVELOPPEUR JAVASCRIPT INDÉPENDANT
+          DÉVELOPPEUR FULLSTACK INDÉPENDANT
           <div class="technos">Node Express React</div>
         </h1>
       </header>
@@ -77,10 +77,10 @@
 
 
 
-
-
-
           HOME
+
+
+
       -->
       <section id="home">
         <h1>Vous cherchez un développeur Javascript ?</h1>
@@ -100,10 +100,10 @@
 
 
 
-
-
-
           A PROPOS
+
+
+
       -->
       <section id="apropos" class="hide">
         <h1 class="purple">Aperçu sur mon parcours</h1>
@@ -157,7 +157,7 @@
             <a href="https://www.lesitedelassurance.fr" target="_blank"
               >lesitedelassurance</a
             >
-            pour un courtier en assurance.
+            pour Courtalia assurance.
           </div>
           <p class="bold">
             PHP, SQL, JS(ES6), Silex, Webpack
@@ -166,9 +166,13 @@
             Développement (front et back), mise en production.
           </p>
           <p>
-            J'ai créé pour ce projet (from scratch) un calendrier/agenda multi
-            vues (mois, semaine, 4 jrs...) avec gestion des RDVs et événements
-            récurrent.
+            Espaces administrateur et partenaires en SPA (Single Page
+            Application) gérés en ES6 natif.
+          </p>
+          <p>
+            Calendrier/Agenda (from scratch) multi vues (mois, semaine, 4
+            jrs...) avec gestion des RDVs et événements récurrent (en mode SPA
+            également).
           </p>
         </div>
 
@@ -182,7 +186,7 @@
             <a href="https://www.capmi.fr" target="_blank">I2SI</a>
           </p>
           <p class="bold">
-            PHP, SQL, JavaScript
+            PHP, SQL, JavaScript, Jquery, Smarty, Html2pdf, Curl, Ajax
           </p>
           <p>
             <strong>CapData</strong> est un logiciel de type SAAS destiné aux
@@ -190,7 +194,8 @@
             la construction.
           </p>
           <p>
-            Il permet d'automatiser des processus tels que :
+            Il permet d'automatiser des processus complexes et recurrents tels
+            que :
           </p>
           <ul>
             <li>Suivi des chantiers</li>
@@ -198,7 +203,7 @@
             <li>Calcul des prime de cotisation et commissions</li>
             <li>Gestion des partenaires, distributeurs, polices...</li>
           </ul>
-          <p class="bold">Mes taches étaient très variées</p>
+          <p class="bold">Tout type de taches</p>
           <ul>
             <li>Développement</li>
             <li>Mise en production</li>
@@ -226,10 +231,10 @@
 
 
 
-
-
-
           COMPÉTENCES
+
+
+
       -->
       <section id="competences" class="hide">
         <h1>Aperçu sur mes compétences</h1>
@@ -324,11 +329,14 @@
 
 
           RÉALISATIONS
+
+
+
       -->
       <section id="realisations" class="hide">
         <h1 class="purple">Réalisations</h1>
         <div>
-          Je vous invite à jeter un œil sur ma page
+          Je vous invite à visiter ma page
           <a href="https://www.github.com/zakaria79" target="_blank">
             Github
             <div class="githubIcon">
@@ -344,20 +352,21 @@
 
 
 
-
-
           CONTACT
+
+
+
       -->
       <section id="contact" class="hide">
         <h1>Laissez moi un message</h1>
-        <form action="/api/portfolio/contact" method="post">
+        <form id="contact-form" action="/api/portfolio/contact" method="post">
           <div class="field">
             <div class="label">
               <label for="email"
                 ><span class="required">*</span> Votre adresse mail</label
               >
             </div>
-            <input type="text" name="email" id="email" />
+            <input type="text" required="required" name="email" id="email" />
           </div>
           <div class="field">
             <div class="label">
@@ -365,7 +374,12 @@
                 ><span class="required">*</span> Votre message</label
               >
             </div>
-            <textarea name="message" raws="10" id="message"></textarea>
+            <textarea
+              name="message"
+              required="required"
+              raws="10"
+              id="message"
+            ></textarea>
           </div>
           <div>
             <input type="submit" id="submit" value="Envoyer" />
@@ -376,8 +390,10 @@
 
 
 
-
       FOOTER
+
+
+
       -->
       <footer>
         Développé par Zakaria Othmane © - 2019 - Tous droits réservés

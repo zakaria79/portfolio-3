@@ -1,46 +1,114 @@
+'use strict';
+
 (function() {
-  'use strict';
-  var menuOpen = false;
+  var menuOpen = false,
+    httpRequest,
+    burger,
+    nav,
+    links;
+
+  var form = {
+    elt: null,
+    email: {
+      elt: null,
+      value: '',
+    },
+    message: {
+      elt: null,
+      value: '',
+    },
+  };
+
+  function getXmlHttpRequestObject() {
+    return function(callback, params) {
+      if (!httpRequest) {
+        throw new Error("Impossible d'executer la requete");
+      }
+
+      httpRequest.onreadystatechange = callback;
+      httpRequest.open(params.method, params.uri);
+      httpRequest.setRequestHeader('Content-Type', 'application/json');
+      httpRequest.send(JSON.stringify(params.data));
+    };
+  }
+
+  function openMenu() {
+    burger.classList.add('open');
+    nav.classList.add('open');
+    menuOpen = true;
+  }
+
+  function closeMenu() {
+    burger.classList.remove('open');
+    nav.classList.remove('open');
+    menuOpen = false;
+  }
+
+  function handleBurgerClick(e) {
+    menuOpen ? closeMenu() : openMenu();
+  }
+
+  function send(req) {
+    if (req.readyState == XMLHttpRequest.DONE) {
+      if (req.status !== 200) {
+        return console.log('Une erreur est survenue');
+      }
+      var response = JSON.parse(req.responseText);
+      console.log(response.computedString);
+    }
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    var req = getXmlHttpRequestObject();
+    var options = {
+      method: 'POST',
+      uri: '/api/contacts',
+      data: { email: form.email.value, message: form.message.value },
+    };
+    req(send, options);
+    console.log('Submit');
+  }
+
+  function handleChange(e) {
+    var el = e.currentTarget;
+    form[el.name].value = el.value;
+  }
+
+  function handleNavLinks(e) {
+    e.preventDefault();
+    var link = e.currentTarget;
+    var section = link.dataset.section;
+
+    document.querySelectorAll('.active').forEach(function(l) {
+      l.classList.remove('active');
+    });
+    link.classList.add('active');
+    document.querySelectorAll('section').forEach(function(s) {
+      s.classList.add('hide');
+    });
+    document.getElementById(section).classList.remove('hide');
+    closeMenu();
+  }
 
   document.addEventListener('DOMContentLoaded', function() {
-    var burger = document.getElementById('Burger');
-    var nav = document.querySelector('.nav');
-    var links = document.querySelectorAll('.link a');
-
-    function openMenu() {
-      burger.classList.add('open');
-      nav.classList.add('open');
-      menuOpen = true;
-    }
-
-    function closeMenu() {
-      burger.classList.remove('open');
-      nav.classList.remove('open');
-      menuOpen = false;
-    }
-
-    function handleNavLinks(e) {
-      e.preventDefault();
-      var link = e.currentTarget;
-      var section = link.dataset.section;
-
-      console.log(section);
-      // GERER L'AFFICHAGE DES SECTIONS
-      document.querySelectorAll('section').forEach(function(s) {
-        s.classList.add('hide');
-      });
-      document.getElementById(section).classList.remove('hide');
-      closeMenu();
-    }
-
-    function handleBurgerClick(e) {
-      menuOpen ? closeMenu() : openMenu();
-    }
+    burger = document.getElementById('Burger');
+    nav = document.querySelector('.nav');
+    links = document.querySelectorAll('.link a');
+    form.elt = document.getElementById('contact-form');
+    form.email.elt = document.getElementById('email');
+    form.message.elt = document.getElementById('message');
+    httpRequest = new XMLHttpRequest();
 
     links.forEach(function(l) {
       l.addEventListener('click', handleNavLinks);
     });
 
     burger.addEventListener('click', handleBurgerClick);
+
+    form.elt.addEventListener('submit', handleSubmit);
+
+    form.email.elt.addEventListener('input', handleChange);
+    form.message.elt.addEventListener('input', handleChange);
   });
 })();

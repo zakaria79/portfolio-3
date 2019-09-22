@@ -7,6 +7,9 @@
   box-sizing: border-box;
 }
 
+body {
+}
+
 p {
   margin: 1rem 0;
 }
@@ -39,6 +42,7 @@ textarea {
 .required {
   color: #bb2020;
 }
+
 .orange {
   color: #e67e22;
 }
@@ -205,4 +209,44 @@ div.date {
 
 div.bloc {
   margin: 1rem 0;
+}
+
+@media screen and (min-width: 1000px) {
+  .nav {
+    position: initial;
+    transform: translateY(0);
+    padding: 0;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #e67e22;
+  }
+
+  nav a {
+    width: 100%;
+    color: #2980b9;
+    text-align: center;
+  }
+
+  nav a:hover,
+  nav a.active {
+    background: #2980b9;
+    color: white;
+  }
+
+  nav .link {
+    width: 20%;
+  }
+  .nav #my-name {
+    display: none;
+  }
+  .main {
+    width: 50%;
+    margin: 0 auto;
+  }
+  #Burger {
+    display: none;
+  }
 }
