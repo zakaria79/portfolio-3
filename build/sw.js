@@ -1,12 +1,6 @@
 var CACHE_STATIC_NAME = 'static-v40';
 var CACHE_DYNAMIC_NAME = 'dynamic-v3';
-var STATIC_FILES = [
-  '/',
-  '/index.html',
-  '/offline.html',
-  '/js/index.js',
-  '/css/style.css',
-];
+var STATIC_FILES = ['/', '/index.html', '/js/index.js', '/css/style.css'];
 
 self.addEventListener('install', function(event) {
   console.log('[Service Worker] Installing Service Worker ...', event);
