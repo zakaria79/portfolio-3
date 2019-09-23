@@ -7,9 +7,6 @@
   box-sizing: border-box;
 }
 
-body {
-}
-
 p {
   margin: 1rem 0;
 }
@@ -232,6 +229,10 @@ div.bloc {
     position: initial;
     transform: translateY(0);
     padding: 0;
+  }
+
+  header {
+    margin-top: 3rem;
   }
 
   nav {
