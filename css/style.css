@@ -168,7 +168,7 @@ footer {
 
 ul {
   margin-left: 1rem;
-  list-style: inside;
+  list-style: none;
 }
 
 .bold {
@@ -211,6 +211,22 @@ div.bloc {
   margin: 1rem 0;
 }
 
+
+#contact-form-success,
+#contact-form-success * {
+  text-align: center;
+  color: #0b670b;
+}
+
+#contact-form-success {
+  border: 1px solid #afc9af;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background: #cae8ca;
+  color: #0b670b;
+  border-radius: 2px;  
+}
+
 @media screen and (min-width: 1000px) {
   .nav {
     position: initial;
@@ -250,3 +266,4 @@ div.bloc {
     display: none;
   }
 }
+

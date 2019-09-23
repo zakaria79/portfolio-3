@@ -2,6 +2,7 @@
 
 (function() {
   var menuOpen = false,
+    formSubmited = false,
     httpRequest,
     burger,
     nav,
@@ -48,18 +49,30 @@
     menuOpen ? closeMenu() : openMenu();
   }
 
-  function send(req) {
-    if (req.readyState == XMLHttpRequest.DONE) {
-      if (req.status !== 200) {
-        return console.log('Une erreur est survenue');
+  function send() {
+    if (httpRequest.readyState == XMLHttpRequest.DONE) {
+      if (httpRequest.status === 200) {
+        var response = JSON.parse(httpRequest.responseText);
+        console.log(response.computedString);
+        document.getElementById('contact-form-success').classList.remove('hide');
+        window.setTimeout(function(){
+          window.location.reload();
+        }, 5000); 
+      } else {
+        console.log('Une erreur est survenue'); 
       }
-      var response = JSON.parse(req.responseText);
-      console.log(response.computedString);
     }
   }
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (formSubmited) {
+      window.location.reload();
+    }
+
+    formSubmited = true;
+
     var req = getXmlHttpRequestObject();
     var options = {
       method: 'POST',
