@@ -45,7 +45,7 @@
     menuOpen = false;
   }
 
-  function handleBurgerClick(e) {
+  function handleBurgerClick() {
     menuOpen ? closeMenu() : openMenu();
   }
 
@@ -54,12 +54,14 @@
       if (httpRequest.status === 200) {
         var response = JSON.parse(httpRequest.responseText);
         console.log(response.computedString);
-        document.getElementById('contact-form-success').classList.remove('hide');
-        window.setTimeout(function(){
+        document
+          .getElementById('contact-form-success')
+          .classList.remove('hide');
+        window.setTimeout(function() {
           window.location.reload();
-        }, 5000); 
+        }, 5000);
       } else {
-        console.log('Une erreur est survenue'); 
+        console.log('Une erreur est survenue');
       }
     }
   }

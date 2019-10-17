@@ -49,6 +49,10 @@ a {
   color: #2980b9;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .nav {
   position: fixed;
   top: 0;
@@ -208,7 +212,6 @@ div.bloc {
   margin: 1rem 0;
 }
 
-
 #contact-form-success,
 #contact-form-success * {
   text-align: center;
@@ -221,7 +224,7 @@ div.bloc {
   padding: 0.5rem;
   background: #cae8ca;
   color: #0b670b;
-  border-radius: 2px;  
+  border-radius: 2px;
 }
 
 @media screen and (min-width: 1000px) {
@@ -267,4 +270,3 @@ div.bloc {
     display: none;
   }
 }
-
